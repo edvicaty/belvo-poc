@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost5432/belvo_poc
-    username:
-    password:
-      driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/belvo_poc
+    username: postgres
+    password: ${PLAYGROUND_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: create-drop
