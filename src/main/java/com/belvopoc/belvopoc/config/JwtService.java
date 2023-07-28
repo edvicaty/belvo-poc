@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.util.function.Function;
 
 @Service
 public class JwtService {
@@ -16,9 +17,14 @@ public class JwtService {
     @Value("${jwt.secretKey}")
     private String SECRET_KEY;
 
-    // TODO: add dependencies for manipulating JWTs
     public String extractUsername(String jwt) {
-        return null;
+        // We are expecting the subject (username) to be email of the User
+        return extractClaim(jwt, Claims::getSubject);
+    }
+
+    private <T> T extractClaim(String jwt, Function<Claims, T> claimResolver) {
+        final Claims claims = extractAllClaims(jwt);
+        return claimResolver.apply(claims);
     }
 
     // Returns various claims as key-value pairs included on the jwt
