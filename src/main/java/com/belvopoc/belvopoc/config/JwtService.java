@@ -77,4 +77,19 @@ public class JwtService {
                 .compact();
     }
 
+    public boolean isTokenValid(String jwt, UserDetails userDetails) {
+        final String username = extractUsername(jwt);
+        // A token will be valid when is not expired and the username on the jwt subject is equal to the username from UserDetails.
+        // Also, the signing is getting evaluated when extracting all claims
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(jwt));
+    }
+
+    private boolean isTokenExpired(String jwt) {
+        return extractExpiration(jwt).before(new Date());
+    }
+
+    private Date extractExpiration(String jwt) {
+        return extractClaim(jwt, Claims::getExpiration);
+    }
+
 }
