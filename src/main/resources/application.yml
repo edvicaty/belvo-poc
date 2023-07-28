@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/belvo_poc
     username: postgres
-    password: ${PLAYGROUND_DB_PASSWORD}
+    password: ${BELVO_DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
