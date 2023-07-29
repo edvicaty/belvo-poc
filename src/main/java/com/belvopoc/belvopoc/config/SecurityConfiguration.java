@@ -1,6 +1,5 @@
 package com.belvopoc.belvopoc.config;
 
-import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +15,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
-    private final Filter jwtAuthFilter;
+    private final JwtAuthenticationFilter jwtAuthFilter;
     // Bean on ApplicationConfiguration
     private final AuthenticationProvider authenticationProvider;
 
