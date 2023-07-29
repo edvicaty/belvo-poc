@@ -45,7 +45,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String userEmail = jwtService.extractUsername(jwt);
 
         // If the UserEmail is null or the User is already authenticated, continue to the next filter
-        if (userEmail == null || SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (userEmail == null || SecurityContextHolder.getContext().getAuthentication() != null) {
             filterChain.doFilter(request, response);
             return;
         }
