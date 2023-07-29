@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.auth;
+package com.belvopoc.belvopoc.api.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

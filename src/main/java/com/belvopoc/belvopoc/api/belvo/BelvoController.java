@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.belvo;
+package com.belvopoc.belvopoc.api.belvo;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

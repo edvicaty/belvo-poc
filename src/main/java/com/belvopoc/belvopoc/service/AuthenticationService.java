@@ -1,6 +1,8 @@
-package com.belvopoc.belvopoc.auth;
+package com.belvopoc.belvopoc.service;
 
-import com.belvopoc.belvopoc.config.JwtService;
+import com.belvopoc.belvopoc.api.auth.AuthenticationRequest;
+import com.belvopoc.belvopoc.api.auth.AuthenticationResponse;
+import com.belvopoc.belvopoc.api.auth.RegisterRequest;
 import com.belvopoc.belvopoc.domain.Role;
 import com.belvopoc.belvopoc.domain.User;
 import com.belvopoc.belvopoc.repository.UserRepository;
