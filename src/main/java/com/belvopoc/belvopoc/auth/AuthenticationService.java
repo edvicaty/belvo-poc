@@ -20,6 +20,8 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     // TODO: add exception handling on register and authenticate methods
+    // TODO: add logic to allow registering users for unique emails
+    // TODO: add email format validation
     // Create User, add it to the database and return token
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
