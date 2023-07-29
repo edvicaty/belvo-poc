@@ -1,9 +1,9 @@
 package com.belvopoc.belvopoc.auth;
 
 import com.belvopoc.belvopoc.config.JwtService;
-import com.belvopoc.belvopoc.user.Role;
-import com.belvopoc.belvopoc.user.User;
-import com.belvopoc.belvopoc.user.UserRepository;
+import com.belvopoc.belvopoc.domain.Role;
+import com.belvopoc.belvopoc.domain.User;
+import com.belvopoc.belvopoc.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

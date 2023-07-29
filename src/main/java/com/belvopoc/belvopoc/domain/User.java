@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.user;
+package com.belvopoc.belvopoc.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

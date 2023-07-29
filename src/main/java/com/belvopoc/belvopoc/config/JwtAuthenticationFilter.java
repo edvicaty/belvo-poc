@@ -1,6 +1,6 @@
 package com.belvopoc.belvopoc.config;
 
-import com.belvopoc.belvopoc.user.User;
+import com.belvopoc.belvopoc.domain.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

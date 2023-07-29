@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.user;
+package com.belvopoc.belvopoc.domain;
 
 public enum Role {
     ADMIN,

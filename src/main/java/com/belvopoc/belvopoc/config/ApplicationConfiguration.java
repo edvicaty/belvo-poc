@@ -1,6 +1,6 @@
 package com.belvopoc.belvopoc.config;
 
-import com.belvopoc.belvopoc.user.UserRepository;
+import com.belvopoc.belvopoc.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
