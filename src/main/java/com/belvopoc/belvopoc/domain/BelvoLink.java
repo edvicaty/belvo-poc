@@ -16,6 +16,7 @@ public class BelvoLink {
     @Id
     @GeneratedValue
     private Long id;
+    // TODO: encrypt belvoId
     private String belvoId;
 
     @ManyToOne
