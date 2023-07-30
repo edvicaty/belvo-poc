@@ -1,5 +1,8 @@
 package com.belvopoc.belvopoc.api.auth;
 
+import com.belvopoc.belvopoc.api.auth.dto.AuthenticationRequest;
+import com.belvopoc.belvopoc.api.auth.dto.AuthenticationResponse;
+import com.belvopoc.belvopoc.api.auth.dto.RegisterRequest;
 import com.belvopoc.belvopoc.service.auth.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

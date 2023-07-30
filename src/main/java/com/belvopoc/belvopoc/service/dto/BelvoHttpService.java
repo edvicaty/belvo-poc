@@ -1,7 +1,7 @@
 package com.belvopoc.belvopoc.service.dto;
 
-import com.belvopoc.belvopoc.api.belvo.AccountsResponse;
-import com.belvopoc.belvopoc.api.belvo.TransactionsResponse;
+import com.belvopoc.belvopoc.api.belvo.dto.AccountsResponse;
+import com.belvopoc.belvopoc.api.belvo.dto.TransactionsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;

@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.api.belvo;
+package com.belvopoc.belvopoc.api.belvo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,12 +7,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AccountsResponse {
+public class TransactionsResponse {
 
     private String id;
-    private InstitutionResponse institution;
     private String currency;
     private String category;
-    private BalanceResponse balance;
+    private Long amount;
+    private String status;
+    private String created_at;
+    private String description;
+    private String type;
 
 }

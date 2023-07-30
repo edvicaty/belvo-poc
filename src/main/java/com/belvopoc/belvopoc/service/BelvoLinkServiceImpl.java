@@ -1,7 +1,7 @@
 package com.belvopoc.belvopoc.service;
 
 
-import com.belvopoc.belvopoc.api.belvo.*;
+import com.belvopoc.belvopoc.api.belvo.dto.*;
 import com.belvopoc.belvopoc.domain.BelvoLink;
 import com.belvopoc.belvopoc.domain.Institution;
 import com.belvopoc.belvopoc.domain.User;

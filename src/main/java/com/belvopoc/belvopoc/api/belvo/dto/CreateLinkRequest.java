@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.api.auth;
+package com.belvopoc.belvopoc.api.belvo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
+public class CreateLinkRequest {
 
-    private String token;
+    private String institution;
+    private String bankUsername;
+    private String bankPassword;
 
 }
