@@ -9,6 +9,8 @@ import com.belvopoc.belvopoc.domain.User;
 import com.belvopoc.belvopoc.repository.BelvoLinkRepository;
 import com.belvopoc.belvopoc.repository.UserRepository;
 import com.belvopoc.belvopoc.service.auth.JwtService;
+import com.belvopoc.belvopoc.service.dto.BelvoHttpService;
+import com.belvopoc.belvopoc.service.dto.RegisterBelvoLinkResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,7 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
     private final UserRepository userRepository;
     private final InstitutionService institutionService;
     private final BelvoLinkRepository belvoLinkRepository;
+    private final BelvoHttpService belvoHttpService;
 
     // TODO: look for a way to store links encoded, finding a way to consult the Belvo API afterwards
     // It's supposed the jwt will be present and valid due to Spring security filters
@@ -32,18 +35,27 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         User user = userRepository.findByEmail(userEmail);
         String institutionName = request.getInstitution();
         Institution institution = institutionService.getInstitutionByName(institutionName);
+        String bankUsername = request.getBankUsername();
+        String bankPassword = request.getBankPassword();
 
-        if (institution == null) {
+        if (institution == null || bankUsername == null || bankPassword == null) {
             return null;
         }
 
-        // TODO: add logic to create a new Belvo Link via API and return if request failed
+        RegisterBelvoLinkResponse registerBelvoLinkResponse = belvoHttpService.registerBelvoLink(
+                institutionName,
+                bankUsername,
+                bankPassword
+        );
 
+        if (registerBelvoLinkResponse == null || !institutionName.equals(registerBelvoLinkResponse.getInstitution())) {
+            return null;
+        }
 
         var belvoLink = BelvoLink.builder()
                 .user(user)
                 .institution(institution)
-                .belvoId("Belvo Id String")
+                .belvoId(registerBelvoLinkResponse.getId())
                 .build();
 
         belvoLinkRepository.save(belvoLink);
