@@ -30,4 +30,20 @@ public class BelvoController {
     ) {
         return ResponseEntity.ok(belvoLinkService.createLink(request, httpServletRequest));
     }
+
+    @PostMapping("/accounts")
+    public ResponseEntity<GetAccountsResponse> getBalances(
+            @RequestBody GetAccountsRequest request,
+            HttpServletRequest httpServletRequest
+    ) {
+        return ResponseEntity.ok(belvoLinkService.getAccounts(request, httpServletRequest));
+    }
+
+    @PostMapping("/transactions")
+    public ResponseEntity<GetTransactionsResponse> getTransactions(
+            @RequestBody GetTransactionsRequest request,
+            HttpServletRequest httpServletRequest
+    ) {
+        return ResponseEntity.ok(belvoLinkService.getTransactions(request, httpServletRequest));
+    }
 }

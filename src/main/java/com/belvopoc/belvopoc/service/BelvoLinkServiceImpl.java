@@ -1,8 +1,7 @@
 package com.belvopoc.belvopoc.service;
 
 
-import com.belvopoc.belvopoc.api.belvo.CreateLinkRequest;
-import com.belvopoc.belvopoc.api.belvo.CreateLinkResponse;
+import com.belvopoc.belvopoc.api.belvo.*;
 import com.belvopoc.belvopoc.domain.BelvoLink;
 import com.belvopoc.belvopoc.domain.Institution;
 import com.belvopoc.belvopoc.domain.User;
@@ -63,6 +62,16 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         return CreateLinkResponse.builder()
                 .status(true)
                 .build();
+    }
+
+    @Override
+    public GetAccountsResponse getAccounts(GetAccountsRequest request, HttpServletRequest httpServletRequest) {
+        return null;
+    }
+
+    @Override
+    public GetTransactionsResponse getTransactions(GetTransactionsRequest request, HttpServletRequest httpServletRequest) {
+        return null;
     }
 
 }
