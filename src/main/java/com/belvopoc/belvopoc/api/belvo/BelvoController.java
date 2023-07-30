@@ -2,11 +2,10 @@ package com.belvopoc.belvopoc.api.belvo;
 
 import com.belvopoc.belvopoc.domain.Institution;
 import com.belvopoc.belvopoc.service.InstitutionService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -20,5 +19,13 @@ public class BelvoController {
     @GetMapping("/institutions")
     public ResponseEntity<Set<Institution>> getAllInstitutions() {
         return ResponseEntity.ok(institutionService.getAllInstitutions());
+    }
+
+    @PostMapping("/link")
+    public ResponseEntity<CreateLinkResponse> createLink(
+            @RequestBody CreateLinkRequest request,
+            HttpServletRequest httpServletRequest
+    ) {
+        return ResponseEntity.ok(institutionService.createLink(request, httpServletRequest));
     }
 }

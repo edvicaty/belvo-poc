@@ -1,7 +1,10 @@
 package com.belvopoc.belvopoc.service;
 
+import com.belvopoc.belvopoc.api.belvo.CreateLinkRequest;
+import com.belvopoc.belvopoc.api.belvo.CreateLinkResponse;
 import com.belvopoc.belvopoc.domain.Institution;
 import com.belvopoc.belvopoc.repository.InstitutionRepository;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +22,10 @@ public class InstitutionServiceImpl implements InstitutionService {
         Set<Institution> institutionSet = new HashSet<>();
         institutionRepository.findAll().iterator().forEachRemaining(institutionSet::add);
         return institutionSet;
+    }
+
+    @Override
+    public CreateLinkResponse createLink(CreateLinkRequest request, HttpServletRequest httpServletRequest) {
+        return null;
     }
 }
