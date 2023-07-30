@@ -87,18 +87,15 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
     @Override
     public TransactionsResponse[] getTransactions(TransactionsRequest request, HttpServletRequest httpServletRequest) {
         BelvoLink belvoLink = getBelvoLinkByRequest(httpServletRequest, request.getInstitution());
-        System.out.println("1-----------------------------------");
 
         if (belvoLink == null) {
             return null;
         }
-        System.out.println("2-----------------------------------");
 
         String belvoLinkId = belvoLink.getBelvoId();
         if (belvoLinkId == null) {
             return null;
         }
-        System.out.println("3-----------------------------------");
 
         return belvoHttpService.getTransactionsByLink(belvoLinkId);
     }
@@ -112,11 +109,6 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         String userEmail = jwtService.extractUsername(jwt);
         User user = userService.findByEmail(userEmail);
         Institution institution = institutionService.getInstitutionByName(institutionName);
-        System.out.println("4-----------------------------------");
-        System.out.println(jwt);
-        System.out.println(userEmail);
-        System.out.println(institutionName);
-        System.out.println(institution.getName());
 
         if (institution == null) {
             return null;

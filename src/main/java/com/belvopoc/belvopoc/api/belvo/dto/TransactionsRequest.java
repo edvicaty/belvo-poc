@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TransactionsRequest {
     private String institution;
+    private int page;
 }
