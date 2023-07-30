@@ -1,6 +1,8 @@
 package com.belvopoc.belvopoc.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,10 +23,14 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "_user_id")
+    @NotNull
     private Long id;
     private String firstName;
     private String lastName;
+    @NotNull
+    @Email
     private String email;
+    @NotNull
     private String password;
 
     @Enumerated(EnumType.STRING)
