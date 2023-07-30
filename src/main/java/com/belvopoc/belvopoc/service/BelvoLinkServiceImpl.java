@@ -97,7 +97,7 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
             return null;
         }
 
-        return belvoHttpService.getTransactionsByLink(belvoLinkId, request.getDateFrom());
+        return belvoHttpService.getTransactionsByLink(belvoLinkId, request.getDateFrom(), request.getDateTo());
     }
 
     private BelvoLink getBelvoLinkByRequest(HttpServletRequest httpServletRequest, String institutionName) {

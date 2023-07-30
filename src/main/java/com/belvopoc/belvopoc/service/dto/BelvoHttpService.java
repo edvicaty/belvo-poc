@@ -76,7 +76,7 @@ public class BelvoHttpService {
         }
     }
 
-    public TransactionsResponse[] getTransactionsByLink(String belvoLink, String dateFrom) {
+    public TransactionsResponse[] getTransactionsByLink(String belvoLink, String dateFrom, String dateTo) {
         String url = baseUrl + "/api/transactions/";
         Map<String, Object> requestBodyMap = new HashMap<>();
         requestBodyMap.put("link", belvoLink);
@@ -85,7 +85,12 @@ public class BelvoHttpService {
         } else {
             requestBodyMap.put("date_from", defaultDateFrom);
         }
-        requestBodyMap.put("date_to", getDateTo());
+
+        if (dateTo != null && !dateTo.isEmpty()) {
+            requestBodyMap.put("date_to", dateTo);
+        } else {
+            requestBodyMap.put("date_to", getDateTo());
+        }
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBodyMap, getPostHeaders());
         ResponseEntity<TransactionsResponse[]> response = restTemplate.postForEntity(url, entity, TransactionsResponse[].class);
 

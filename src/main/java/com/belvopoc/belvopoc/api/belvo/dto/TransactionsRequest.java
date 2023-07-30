@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class TransactionsRequest {
     private String institution;
     private String dateFrom;
+    private String dateTo;
 }
