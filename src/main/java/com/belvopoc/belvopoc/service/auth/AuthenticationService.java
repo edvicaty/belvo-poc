@@ -23,6 +23,8 @@ public class AuthenticationService {
 
     // TODO: add exception handling on register and authenticate methods
     // TODO: add email format validation
+    // TODO: add refresh tokens
+    // TODO: add MFA support for Belvo API
     // Create User, add it to the database and return token
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
