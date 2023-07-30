@@ -65,7 +65,6 @@ public class BelvoHttpService {
         requestBodyMap.put("link", belvoLink);
         requestBodyMap.put("date_from", dateFrom);
         requestBodyMap.put("date_to", getDateTo());
-        System.out.println(getDateTo());
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBodyMap, getPostHeaders());
         ResponseEntity<AccountsResponse[]> response = restTemplate.postForEntity(url, entity, AccountsResponse[].class);
@@ -83,7 +82,6 @@ public class BelvoHttpService {
         requestBodyMap.put("link", belvoLink);
         requestBodyMap.put("date_from", dateFrom);
         requestBodyMap.put("date_to", getDateTo());
-        System.out.println(getDateTo());
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBodyMap, getPostHeaders());
         ResponseEntity<TransactionsResponse[]> response = restTemplate.postForEntity(url, entity, TransactionsResponse[].class);
 
