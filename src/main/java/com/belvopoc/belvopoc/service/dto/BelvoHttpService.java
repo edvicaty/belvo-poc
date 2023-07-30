@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.service;
+package com.belvopoc.belvopoc.service.dto;
 
 import com.belvopoc.belvopoc.domain.BelvoLink;
 import lombok.RequiredArgsConstructor;

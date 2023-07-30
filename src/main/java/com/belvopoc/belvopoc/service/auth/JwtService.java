@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.service;
+package com.belvopoc.belvopoc.service.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

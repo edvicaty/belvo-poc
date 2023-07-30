@@ -8,6 +8,7 @@ import com.belvopoc.belvopoc.domain.Institution;
 import com.belvopoc.belvopoc.domain.User;
 import com.belvopoc.belvopoc.repository.BelvoLinkRepository;
 import com.belvopoc.belvopoc.repository.UserRepository;
+import com.belvopoc.belvopoc.service.auth.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.service;
+package com.belvopoc.belvopoc.service.auth;
 
 import com.belvopoc.belvopoc.api.auth.AuthenticationRequest;
 import com.belvopoc.belvopoc.api.auth.AuthenticationResponse;
