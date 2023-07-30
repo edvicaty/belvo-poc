@@ -7,8 +7,8 @@ public interface BelvoLinkService {
 
     CreateLinkResponse createLink(CreateLinkRequest request, HttpServletRequest httpServletRequest);
 
-    GetAccountsResponse getAccounts(GetAccountsRequest request, HttpServletRequest httpServletRequest);
+    AccountsResponse[] getAccounts(AccountsRequest request, HttpServletRequest httpServletRequest);
 
-    GetTransactionsResponse getTransactions(GetTransactionsRequest request, HttpServletRequest httpServletRequest);
+    TransactionsResponse[] getTransactions(TransactionsRequest request, HttpServletRequest httpServletRequest);
 
 }

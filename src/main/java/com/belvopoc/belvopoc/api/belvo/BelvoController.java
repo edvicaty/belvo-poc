@@ -32,16 +32,16 @@ public class BelvoController {
     }
 
     @PostMapping("/accounts")
-    public ResponseEntity<GetAccountsResponse> getBalances(
-            @RequestBody GetAccountsRequest request,
+    public ResponseEntity<AccountsResponse[]> getBalances(
+            @RequestBody AccountsRequest request,
             HttpServletRequest httpServletRequest
     ) {
         return ResponseEntity.ok(belvoLinkService.getAccounts(request, httpServletRequest));
     }
 
     @PostMapping("/transactions")
-    public ResponseEntity<GetTransactionsResponse> getTransactions(
-            @RequestBody GetTransactionsRequest request,
+    public ResponseEntity<TransactionsResponse[]> getTransactions(
+            @RequestBody TransactionsRequest request,
             HttpServletRequest httpServletRequest
     ) {
         return ResponseEntity.ok(belvoLinkService.getTransactions(request, httpServletRequest));

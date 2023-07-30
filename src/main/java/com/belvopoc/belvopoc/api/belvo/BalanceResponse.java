@@ -1,14 +1,13 @@
 package com.belvopoc.belvopoc.api.belvo;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetTransactionsRequest {
-    private String institution;
+public class BalanceResponse {
+    private Long current;
+    private Long available;
 }

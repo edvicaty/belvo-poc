@@ -1,11 +1,15 @@
 package com.belvopoc.belvopoc.service.dto;
 
+import com.belvopoc.belvopoc.api.belvo.AccountsResponse;
+import com.belvopoc.belvopoc.api.belvo.TransactionsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.HashMap;
@@ -25,6 +29,10 @@ public class BelvoHttpService {
 
     @Value("${api.belvoApiPassword}")
     private String apiPassword;
+
+    // Choosing Unix Epoch Date to list all possible data from Belvo API
+    // A Range date feature will be desirable to implement as a TODO
+    private final String dateFrom = "1970-01-01";
 
     private HttpHeaders getPostHeaders() {
         String authorizationHeader = apiId + ":" + apiPassword;
@@ -51,4 +59,43 @@ public class BelvoHttpService {
 
     }
 
+    public AccountsResponse[] getAccountsByLink(String belvoLink) {
+        String url = baseUrl + "/api/accounts/";
+        Map<String, Object> requestBodyMap = new HashMap<>();
+        requestBodyMap.put("link", belvoLink);
+        requestBodyMap.put("date_from", dateFrom);
+        requestBodyMap.put("date_to", getDateTo());
+        System.out.println(getDateTo());
+
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBodyMap, getPostHeaders());
+        ResponseEntity<AccountsResponse[]> response = restTemplate.postForEntity(url, entity, AccountsResponse[].class);
+
+        if (response.getStatusCode() == HttpStatus.CREATED) {
+            return response.getBody();
+        } else {
+            return null;
+        }
+    }
+
+    public TransactionsResponse[] getTransactionsByLink(String belvoLink) {
+        String url = baseUrl + "/api/transactions/";
+        Map<String, Object> requestBodyMap = new HashMap<>();
+        requestBodyMap.put("link", belvoLink);
+        requestBodyMap.put("date_from", dateFrom);
+        requestBodyMap.put("date_to", getDateTo());
+        System.out.println(getDateTo());
+        HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBodyMap, getPostHeaders());
+        ResponseEntity<TransactionsResponse[]> response = restTemplate.postForEntity(url, entity, TransactionsResponse[].class);
+
+        if (response.getStatusCode() == HttpStatus.CREATED) {
+            return response.getBody();
+        } else {
+            return null;
+        }
+    }
+
+    private String getDateTo() {
+        LocalDate currentDate = LocalDate.now();
+        return currentDate.format(DateTimeFormatter.ISO_LOCAL_DATE);
+    }
 }
