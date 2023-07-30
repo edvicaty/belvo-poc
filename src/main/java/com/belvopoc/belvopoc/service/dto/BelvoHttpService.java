@@ -32,7 +32,7 @@ public class BelvoHttpService {
 
     // Choosing Unix Epoch Date to list all possible data from Belvo API
     // A Range date feature will be desirable to implement as a TODO
-    private final String dateFrom = "1970-01-01";
+    private final String defaultDateFrom = "1970-01-01";
 
     private HttpHeaders getPostHeaders() {
         String authorizationHeader = apiId + ":" + apiPassword;
@@ -63,7 +63,7 @@ public class BelvoHttpService {
         String url = baseUrl + "/api/accounts/";
         Map<String, Object> requestBodyMap = new HashMap<>();
         requestBodyMap.put("link", belvoLink);
-        requestBodyMap.put("date_from", dateFrom);
+        requestBodyMap.put("date_from", defaultDateFrom);
         requestBodyMap.put("date_to", getDateTo());
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBodyMap, getPostHeaders());
@@ -76,11 +76,15 @@ public class BelvoHttpService {
         }
     }
 
-    public TransactionsResponse[] getTransactionsByLink(String belvoLink) {
+    public TransactionsResponse[] getTransactionsByLink(String belvoLink, String dateFrom) {
         String url = baseUrl + "/api/transactions/";
         Map<String, Object> requestBodyMap = new HashMap<>();
         requestBodyMap.put("link", belvoLink);
-        requestBodyMap.put("date_from", dateFrom);
+        if (dateFrom != null && !dateFrom.isEmpty()) {
+            requestBodyMap.put("date_from", dateFrom);
+        } else {
+            requestBodyMap.put("date_from", defaultDateFrom);
+        }
         requestBodyMap.put("date_to", getDateTo());
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBodyMap, getPostHeaders());
         ResponseEntity<TransactionsResponse[]> response = restTemplate.postForEntity(url, entity, TransactionsResponse[].class);
