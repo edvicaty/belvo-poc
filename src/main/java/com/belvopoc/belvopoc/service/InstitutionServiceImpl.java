@@ -1,10 +1,7 @@
 package com.belvopoc.belvopoc.service;
 
-import com.belvopoc.belvopoc.api.belvo.CreateLinkRequest;
-import com.belvopoc.belvopoc.api.belvo.CreateLinkResponse;
 import com.belvopoc.belvopoc.domain.Institution;
 import com.belvopoc.belvopoc.repository.InstitutionRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +22,8 @@ public class InstitutionServiceImpl implements InstitutionService {
     }
 
     @Override
-    public CreateLinkResponse createLink(CreateLinkRequest request, HttpServletRequest httpServletRequest) {
-        return null;
+    public Institution getInstitutionByName(String name) {
+        return institutionRepository.findByName(name);
     }
+
 }

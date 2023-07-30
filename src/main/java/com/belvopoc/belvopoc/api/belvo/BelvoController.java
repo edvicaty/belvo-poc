@@ -1,6 +1,7 @@
 package com.belvopoc.belvopoc.api.belvo;
 
 import com.belvopoc.belvopoc.domain.Institution;
+import com.belvopoc.belvopoc.service.BelvoLinkService;
 import com.belvopoc.belvopoc.service.InstitutionService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.Set;
 public class BelvoController {
 
     private final InstitutionService institutionService;
+    private final BelvoLinkService belvoLinkService;
 
     @GetMapping("/institutions")
     public ResponseEntity<Set<Institution>> getAllInstitutions() {
@@ -26,6 +28,6 @@ public class BelvoController {
             @RequestBody CreateLinkRequest request,
             HttpServletRequest httpServletRequest
     ) {
-        return ResponseEntity.ok(institutionService.createLink(request, httpServletRequest));
+        return ResponseEntity.ok(belvoLinkService.createLink(request, httpServletRequest));
     }
 }
