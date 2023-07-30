@@ -17,5 +17,6 @@ public class TransactionsResponse {
     private String created_at;
     private String description;
     private String type;
+    private AccountResponse account;
 
 }
