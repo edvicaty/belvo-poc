@@ -19,3 +19,8 @@ spring:
       mode: always
 jwt:
   secretKey: ${BELVO_JWT_SECRET_KEY}
+api:
+  belvoApiBaseUrl: ${BELVO_API_BASE_URL}
+  belvoApiId: ${BELVO_API_ID}
+  belvoApiPassword: ${BELVO_API_PASSWORD}
+
