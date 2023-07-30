@@ -33,20 +33,20 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         User user = userService.findByEmail(userEmail);
         String institutionName = request.getInstitution();
         if (institutionName == null) {
-            return null;
+            throw new IllegalArgumentException("Institution not found");
         }
         Institution institution = institutionService.getInstitutionByName(institutionName);
         String bankUsername = request.getBankUsername();
         String bankPassword = request.getBankPassword();
 
         if (institution == null || bankUsername == null || bankPassword == null) {
-            return null;
+            throw new IllegalArgumentException("Error handling banking credentials");
         }
 
         // Avoid duplicated Links creations for the same pair User/Institution
         BelvoLink existingBelvoLink = belvoLinkRepository.findByInstitutionIdAndUserId(institution.getId(), user.getId());
         if (existingBelvoLink != null) {
-            return null;
+            throw new IllegalArgumentException("Link is already created for that User Institution pair");
         }
         RegisterBelvoLinkResponse registerBelvoLinkResponse = belvoHttpService.registerBelvoLink(
                 institutionName,
@@ -55,7 +55,7 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         );
 
         if (registerBelvoLinkResponse == null || !institutionName.equals(registerBelvoLinkResponse.getInstitution())) {
-            return null;
+            throw new IllegalArgumentException("Error registering link on Belvo API");
         }
 
         var belvoLink = BelvoLink.builder()
@@ -75,11 +75,11 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
     public AccountsResponse[] getAccounts(AccountsRequest request, HttpServletRequest httpServletRequest) {
         BelvoLink belvoLink = getBelvoLinkByRequest(httpServletRequest, request.getInstitution());
         if (belvoLink == null) {
-            return null;
+            throw new IllegalArgumentException("Could not find Belvo Link");
         }
         String belvoLinkId = belvoLink.getBelvoId();
         if (belvoLinkId == null) {
-            return null;
+            throw new IllegalArgumentException("Missing Belvo Link Id");
         }
         return belvoHttpService.getAccountsByLink(belvoLinkId);
     }
@@ -89,12 +89,12 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         BelvoLink belvoLink = getBelvoLinkByRequest(httpServletRequest, request.getInstitution());
 
         if (belvoLink == null) {
-            return null;
+            throw new IllegalArgumentException("Could not find Belvo Link");
         }
 
         String belvoLinkId = belvoLink.getBelvoId();
         if (belvoLinkId == null) {
-            return null;
+            throw new IllegalArgumentException("Missing Belvo Link Id");
         }
 
         return belvoHttpService.getTransactionsByLink(belvoLinkId, request.getDateFrom(), request.getDateTo());
@@ -102,7 +102,8 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
 
     private BelvoLink getBelvoLinkByRequest(HttpServletRequest httpServletRequest, String institutionName) {
         if (institutionName == null) {
-            return null;
+            throw new IllegalArgumentException("institutionName is required");
+
         }
         String authHeader = httpServletRequest.getHeader("Authorization");
         String jwt = authHeader.substring(7);
@@ -111,7 +112,7 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         Institution institution = institutionService.getInstitutionByName(institutionName);
 
         if (institution == null) {
-            return null;
+            throw new IllegalArgumentException("Could not find and institution with that name");
         }
         return belvoLinkRepository.findByInstitutionIdAndUserId(institution.getId(), user.getId());
     }

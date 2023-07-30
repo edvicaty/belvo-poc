@@ -36,7 +36,7 @@ public class AuthenticationService {
                 .build();
         User savedUser = userService.save(user);
         if (savedUser == null) {
-            return null;
+            throw new IllegalArgumentException("Cannot create user, review request arguments");
         }
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
