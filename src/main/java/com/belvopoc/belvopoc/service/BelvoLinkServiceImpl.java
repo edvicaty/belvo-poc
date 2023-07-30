@@ -6,7 +6,6 @@ import com.belvopoc.belvopoc.domain.BelvoLink;
 import com.belvopoc.belvopoc.domain.Institution;
 import com.belvopoc.belvopoc.domain.User;
 import com.belvopoc.belvopoc.repository.BelvoLinkRepository;
-import com.belvopoc.belvopoc.repository.UserRepository;
 import com.belvopoc.belvopoc.service.auth.JwtService;
 import com.belvopoc.belvopoc.service.dto.BelvoHttpService;
 import com.belvopoc.belvopoc.service.dto.RegisterBelvoLinkResponse;
@@ -19,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class BelvoLinkServiceImpl implements BelvoLinkService {
 
     private final JwtService jwtService;
-    private final UserRepository userRepository;
+    private final UserService userService;
     private final InstitutionService institutionService;
     private final BelvoLinkRepository belvoLinkRepository;
     private final BelvoHttpService belvoHttpService;
@@ -31,7 +30,7 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         String authHeader = httpServletRequest.getHeader("Authorization");
         String jwt = authHeader.substring(7);
         String userEmail = jwtService.extractUsername(jwt);
-        User user = userRepository.findByEmail(userEmail);
+        User user = userService.findByEmail(userEmail);
         String institutionName = request.getInstitution();
         Institution institution = institutionService.getInstitutionByName(institutionName);
         String bankUsername = request.getBankUsername();
