@@ -22,12 +22,7 @@ public class ApplicationConfiguration {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                return userService.findByEmail(username);
-            }
-        };
+        return userService::findByEmail;
     }
 
     // Bean responsible for fetching the User details and encoding password

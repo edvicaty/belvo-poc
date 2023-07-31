@@ -26,17 +26,17 @@ public class BelvoController {
     }
 
     @PostMapping("/link")
-    public ResponseEntity<?> createLink(
+    public ResponseEntity<CreateLinkResponse> createLink(
             @RequestBody CreateLinkRequest request,
             HttpServletRequest httpServletRequest
     ) {
         CreateLinkResponse response = belvoLinkService.createLink(request, httpServletRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Link Created");
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     }
 
     @PostMapping("/accounts")
-    public ResponseEntity<?> getBalances(
+    public ResponseEntity<AccountsResponse[]> getBalances(
             @RequestBody AccountsRequest request,
             HttpServletRequest httpServletRequest
     ) {
@@ -46,7 +46,7 @@ public class BelvoController {
     }
 
     @PostMapping("/transactions")
-    public ResponseEntity<?> getTransactions(
+    public ResponseEntity<TransactionsResponse[]> getTransactions(
             @RequestBody TransactionsRequest request,
             HttpServletRequest httpServletRequest
     ) {

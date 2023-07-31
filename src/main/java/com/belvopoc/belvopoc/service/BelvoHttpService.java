@@ -1,5 +1,6 @@
 package com.belvopoc.belvopoc.service;
 
+import com.belvopoc.belvopoc.exception.BelvoException;
 import com.belvopoc.belvopoc.model.dto.AccountsResponse;
 import com.belvopoc.belvopoc.model.dto.TransactionsResponse;
 import com.belvopoc.belvopoc.model.dto.RegisterBelvoLinkResponse;
@@ -32,7 +33,6 @@ public class BelvoHttpService {
     private String apiPassword;
 
     // Choosing Unix Epoch Date to list all possible data from Belvo API
-    // A Range date feature will be desirable to implement as a TODO
     private final String defaultDateFrom = "1970-01-01";
 
     private HttpHeaders getPostHeaders() {
@@ -55,7 +55,7 @@ public class BelvoHttpService {
         if (response.getStatusCode() == HttpStatus.CREATED) {
             return response.getBody();
         } else {
-            return null;
+            throw new BelvoException("Couldn't register Belvo Link from Belvo API");
         }
 
     }
@@ -73,7 +73,7 @@ public class BelvoHttpService {
         if (response.getStatusCode() == HttpStatus.CREATED) {
             return response.getBody();
         } else {
-            return null;
+            throw new BelvoException("Couldn't get accounts from Belvo API");
         }
     }
 
@@ -98,7 +98,7 @@ public class BelvoHttpService {
         if (response.getStatusCode() == HttpStatus.CREATED) {
             return response.getBody();
         } else {
-            return null;
+            throw new BelvoException("Couldn't get transactions from Belvo API");
         }
     }
 

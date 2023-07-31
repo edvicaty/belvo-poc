@@ -1,5 +1,6 @@
 package com.belvopoc.belvopoc.service;
 
+import com.belvopoc.belvopoc.exception.BelvoException;
 import com.belvopoc.belvopoc.model.User;
 import com.belvopoc.belvopoc.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +20,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) {
         User existingUser = findByEmail(user.getEmail());
-        if (existingUser != null || user.getEmail() == null || user.getPassword() == null) {
-            return null;
+        if (existingUser != null) {
+            throw new BelvoException("User already exists");
         }
         return userRepository.save(user);
     }
