@@ -5,7 +5,6 @@ import com.belvopoc.belvopoc.model.dto.AuthenticationResponse;
 import com.belvopoc.belvopoc.model.dto.RegisterRequest;
 import com.belvopoc.belvopoc.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,12 +22,9 @@ public class AuthenticationController {
     public ResponseEntity<?> register(
             @RequestBody RegisterRequest request
     ) {
-        try {
-            AuthenticationResponse response = authenticationService.register(request);
-            return ResponseEntity.ok(response);
-        } catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        }
+        AuthenticationResponse response = authenticationService.register(request);
+        return ResponseEntity.ok(response);
+
     }
 
     @PostMapping("/authenticate")

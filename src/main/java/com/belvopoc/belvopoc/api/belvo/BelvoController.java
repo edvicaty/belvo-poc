@@ -30,12 +30,9 @@ public class BelvoController {
             @RequestBody CreateLinkRequest request,
             HttpServletRequest httpServletRequest
     ) {
-        try {
-            CreateLinkResponse response = belvoLinkService.createLink(request, httpServletRequest);
-            return ResponseEntity.status(HttpStatus.CREATED).body("Link Created");
-        } catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        }
+        CreateLinkResponse response = belvoLinkService.createLink(request, httpServletRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Link Created");
+
     }
 
     @PostMapping("/accounts")
@@ -43,12 +40,9 @@ public class BelvoController {
             @RequestBody AccountsRequest request,
             HttpServletRequest httpServletRequest
     ) {
-        try {
-            AccountsResponse[] response = belvoLinkService.getAccounts(request, httpServletRequest);
-            return ResponseEntity.ok(response);
-        } catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        }
+        AccountsResponse[] response = belvoLinkService.getAccounts(request, httpServletRequest);
+        return ResponseEntity.ok(response);
+
     }
 
     @PostMapping("/transactions")
@@ -56,11 +50,8 @@ public class BelvoController {
             @RequestBody TransactionsRequest request,
             HttpServletRequest httpServletRequest
     ) {
-        try {
-            TransactionsResponse[] response = belvoLinkService.getTransactions(request, httpServletRequest);
-            return ResponseEntity.ok(response);
-        } catch (IllegalArgumentException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        }
+        TransactionsResponse[] response = belvoLinkService.getTransactions(request, httpServletRequest);
+        return ResponseEntity.ok(response);
+
     }
 }

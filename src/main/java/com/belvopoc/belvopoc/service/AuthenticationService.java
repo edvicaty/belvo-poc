@@ -1,5 +1,6 @@
 package com.belvopoc.belvopoc.service;
 
+import com.belvopoc.belvopoc.exception.BelvoException;
 import com.belvopoc.belvopoc.model.dto.AuthenticationRequest;
 import com.belvopoc.belvopoc.model.dto.AuthenticationResponse;
 import com.belvopoc.belvopoc.model.dto.RegisterRequest;
@@ -35,7 +36,7 @@ public class AuthenticationService {
                 .build();
         User savedUser = userService.save(user);
         if (savedUser == null) {
-            throw new IllegalArgumentException("Cannot create user, review request arguments");
+            throw new BelvoException("Cannot create user, review request arguments");
         }
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()

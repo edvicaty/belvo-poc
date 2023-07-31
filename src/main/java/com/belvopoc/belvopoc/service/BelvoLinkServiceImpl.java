@@ -1,6 +1,7 @@
 package com.belvopoc.belvopoc.service;
 
 
+import com.belvopoc.belvopoc.exception.BelvoException;
 import com.belvopoc.belvopoc.model.BelvoLink;
 import com.belvopoc.belvopoc.model.Institution;
 import com.belvopoc.belvopoc.model.User;
@@ -30,20 +31,20 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         User user = userService.findByEmail(userEmail);
         String institutionName = request.getInstitution();
         if (institutionName == null) {
-            throw new IllegalArgumentException("Institution not found");
+            throw new BelvoException("Institution not found");
         }
         Institution institution = institutionService.getInstitutionByName(institutionName);
         String bankUsername = request.getBankUsername();
         String bankPassword = request.getBankPassword();
 
         if (institution == null || bankUsername == null || bankPassword == null) {
-            throw new IllegalArgumentException("Error handling banking credentials");
+            throw new BelvoException("Error handling banking credentials");
         }
 
         // Avoid duplicated Links creations for the same pair User/Institution
         BelvoLink existingBelvoLink = belvoLinkRepository.findByInstitutionIdAndUserId(institution.getId(), user.getId());
         if (existingBelvoLink != null) {
-            throw new IllegalArgumentException("Link is already created for that User Institution pair");
+            throw new BelvoException("Link is already created for that User Institution pair");
         }
         RegisterBelvoLinkResponse registerBelvoLinkResponse = belvoHttpService.registerBelvoLink(
                 institutionName,
@@ -52,7 +53,7 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         );
 
         if (registerBelvoLinkResponse == null || !institutionName.equals(registerBelvoLinkResponse.getInstitution())) {
-            throw new IllegalArgumentException("Error registering link on Belvo API");
+            throw new BelvoException("Error registering link on Belvo API");
         }
 
         var belvoLink = BelvoLink.builder()
@@ -72,7 +73,7 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
     public AccountsResponse[] getAccounts(AccountsRequest request, HttpServletRequest httpServletRequest) {
         BelvoLink belvoLink = getBelvoLinkByRequest(httpServletRequest, request.getInstitution());
         if (belvoLink == null) {
-            throw new IllegalArgumentException("Could not find Belvo Link");
+            throw new BelvoException("Could not find Belvo Link");
         }
         String belvoLinkId = belvoLink.getBelvoId();
         if (belvoLinkId == null) {
@@ -86,7 +87,7 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         BelvoLink belvoLink = getBelvoLinkByRequest(httpServletRequest, request.getInstitution());
 
         if (belvoLink == null) {
-            throw new IllegalArgumentException("Could not find Belvo Link");
+            throw new BelvoException("Could not find Belvo Link");
         }
 
         String belvoLinkId = belvoLink.getBelvoId();
@@ -109,7 +110,7 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
         Institution institution = institutionService.getInstitutionByName(institutionName);
 
         if (institution == null) {
-            throw new IllegalArgumentException("Could not find and institution with that name");
+            throw new BelvoException("Could not find and institution with that name");
         }
         return belvoLinkRepository.findByInstitutionIdAndUserId(institution.getId(), user.getId());
     }
