@@ -17,7 +17,6 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    // Not making the variable final due to potential errors at runtime when using the @Value annotation
     @Value("${jwt.secretKey}")
     private String SECRET_KEY;
     // Set expiration time to a day
@@ -37,7 +36,6 @@ public class JwtService {
     private Claims extractAllClaims(String jwt) {
         return Jwts.
                 parserBuilder()
-                // Get and set Secret Signing Key
                 .setSigningKey(getSigningKey())
                 .build()
                 // Verify signature of the provided jwt using the provided signing key
@@ -57,7 +55,6 @@ public class JwtService {
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
-                // We are using the email as the Username
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTimeMillis))
@@ -69,7 +66,6 @@ public class JwtService {
     public String generateToken(UserDetails userDetails) {
         return Jwts
                 .builder()
-                // We are using the email as the Username
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expirationTimeMillis))

@@ -21,7 +21,6 @@ public class BelvoLinkServiceImpl implements BelvoLinkService {
     private final InstitutionService institutionService;
     private final BelvoHttpService belvoHttpService;
 
-    // TODO: look for a way to store links encoded, finding a way to consult the Belvo API afterwards
     // The jwt and user should be present and valid due to Spring security filters
     @Override
     public CreateLinkResponse createLink(CreateLinkRequest request, HttpServletRequest httpServletRequest) {
