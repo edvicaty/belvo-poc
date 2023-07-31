@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 // permitAll on "" request Matchers, any other should be authenticated
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers("/api/v1/auth/**", "/swagger-ui/**", "/v3/**").permitAll()
                         .anyRequest().authenticated())
                 // Session Creation Stateless. Spring will create a new session for each request
                 .sessionManagement(sessions -> sessions
