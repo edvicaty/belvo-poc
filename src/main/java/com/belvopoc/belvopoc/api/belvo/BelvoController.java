@@ -5,6 +5,7 @@ import com.belvopoc.belvopoc.model.dto.*;
 import com.belvopoc.belvopoc.service.BelvoLinkService;
 import com.belvopoc.belvopoc.service.InstitutionService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class BelvoController {
 
     @PostMapping("/link")
     public ResponseEntity<CreateLinkResponse> createLink(
-            @RequestBody CreateLinkRequest request,
+            @Valid @RequestBody CreateLinkRequest request,
             HttpServletRequest httpServletRequest
     ) {
         CreateLinkResponse response = belvoLinkService.createLink(request, httpServletRequest);
@@ -37,7 +38,7 @@ public class BelvoController {
 
     @PostMapping("/accounts")
     public ResponseEntity<AccountsResponse[]> getBalances(
-            @RequestBody AccountsRequest request,
+            @Valid @RequestBody AccountsRequest request,
             HttpServletRequest httpServletRequest
     ) {
         AccountsResponse[] response = belvoLinkService.getAccounts(request, httpServletRequest);
@@ -47,7 +48,7 @@ public class BelvoController {
 
     @PostMapping("/transactions")
     public ResponseEntity<TransactionsResponse[]> getTransactions(
-            @RequestBody TransactionsRequest request,
+            @Valid @RequestBody TransactionsRequest request,
             HttpServletRequest httpServletRequest
     ) {
         TransactionsResponse[] response = belvoLinkService.getTransactions(request, httpServletRequest);
