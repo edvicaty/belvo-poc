@@ -1,6 +1,6 @@
 package com.belvopoc.belvopoc.service;
 
-import com.belvopoc.belvopoc.domain.Institution;
+import com.belvopoc.belvopoc.model.Institution;
 
 import java.util.Set;
 

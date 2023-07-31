@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.domain;
+package com.belvopoc.belvopoc.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

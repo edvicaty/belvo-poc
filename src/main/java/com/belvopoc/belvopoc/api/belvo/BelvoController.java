@@ -1,8 +1,7 @@
 package com.belvopoc.belvopoc.api.belvo;
 
-import com.belvopoc.belvopoc.api.auth.dto.AuthenticationResponse;
-import com.belvopoc.belvopoc.api.belvo.dto.*;
-import com.belvopoc.belvopoc.domain.Institution;
+import com.belvopoc.belvopoc.model.Institution;
+import com.belvopoc.belvopoc.model.dto.*;
 import com.belvopoc.belvopoc.service.BelvoLinkService;
 import com.belvopoc.belvopoc.service.InstitutionService;
 import jakarta.servlet.http.HttpServletRequest;

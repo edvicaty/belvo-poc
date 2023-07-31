@@ -1,7 +1,8 @@
-package com.belvopoc.belvopoc.service.dto;
+package com.belvopoc.belvopoc.service;
 
-import com.belvopoc.belvopoc.api.belvo.dto.AccountsResponse;
-import com.belvopoc.belvopoc.api.belvo.dto.TransactionsResponse;
+import com.belvopoc.belvopoc.model.dto.AccountsResponse;
+import com.belvopoc.belvopoc.model.dto.TransactionsResponse;
+import com.belvopoc.belvopoc.model.dto.RegisterBelvoLinkResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;

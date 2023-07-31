@@ -1,7 +1,7 @@
 package com.belvopoc.belvopoc.config;
 
-import com.belvopoc.belvopoc.domain.User;
-import com.belvopoc.belvopoc.service.auth.JwtService;
+import com.belvopoc.belvopoc.model.User;
+import com.belvopoc.belvopoc.service.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,6 +1,6 @@
 package com.belvopoc.belvopoc.service;
 
-import com.belvopoc.belvopoc.api.belvo.dto.*;
+import com.belvopoc.belvopoc.model.dto.*;
 import jakarta.servlet.http.HttpServletRequest;
 
 public interface BelvoLinkService {

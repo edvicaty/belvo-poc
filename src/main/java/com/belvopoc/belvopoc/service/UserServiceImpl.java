@@ -1,6 +1,6 @@
 package com.belvopoc.belvopoc.service;
 
-import com.belvopoc.belvopoc.domain.User;
+import com.belvopoc.belvopoc.model.User;
 import com.belvopoc.belvopoc.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,9 +1,9 @@
 package com.belvopoc.belvopoc.api.auth;
 
-import com.belvopoc.belvopoc.api.auth.dto.AuthenticationRequest;
-import com.belvopoc.belvopoc.api.auth.dto.AuthenticationResponse;
-import com.belvopoc.belvopoc.api.auth.dto.RegisterRequest;
-import com.belvopoc.belvopoc.service.auth.AuthenticationService;
+import com.belvopoc.belvopoc.model.dto.AuthenticationRequest;
+import com.belvopoc.belvopoc.model.dto.AuthenticationResponse;
+import com.belvopoc.belvopoc.model.dto.RegisterRequest;
+import com.belvopoc.belvopoc.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

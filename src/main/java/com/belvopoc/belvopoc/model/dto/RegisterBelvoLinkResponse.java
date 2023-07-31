@@ -1,14 +1,18 @@
-package com.belvopoc.belvopoc.api.belvo.dto;
+package com.belvopoc.belvopoc.model.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransactionsRequest {
+public class RegisterBelvoLinkResponse {
+
+    private String id;
     private String institution;
-    private String dateFrom;
-    private String dateTo;
+
 }

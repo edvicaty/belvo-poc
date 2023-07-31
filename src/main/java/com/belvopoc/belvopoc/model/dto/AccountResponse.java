@@ -1,4 +1,4 @@
-package com.belvopoc.belvopoc.api.belvo.dto;
+package com.belvopoc.belvopoc.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

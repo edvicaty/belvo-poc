@@ -1,14 +1,11 @@
 package com.belvopoc.belvopoc.service;
 
 
-import com.belvopoc.belvopoc.api.belvo.dto.*;
-import com.belvopoc.belvopoc.domain.BelvoLink;
-import com.belvopoc.belvopoc.domain.Institution;
-import com.belvopoc.belvopoc.domain.User;
+import com.belvopoc.belvopoc.model.BelvoLink;
+import com.belvopoc.belvopoc.model.Institution;
+import com.belvopoc.belvopoc.model.User;
+import com.belvopoc.belvopoc.model.dto.*;
 import com.belvopoc.belvopoc.repository.BelvoLinkRepository;
-import com.belvopoc.belvopoc.service.auth.JwtService;
-import com.belvopoc.belvopoc.service.dto.BelvoHttpService;
-import com.belvopoc.belvopoc.service.dto.RegisterBelvoLinkResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

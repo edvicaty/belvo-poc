@@ -1,6 +1,6 @@
 package com.belvopoc.belvopoc.repository;
 
-import com.belvopoc.belvopoc.domain.Institution;
+import com.belvopoc.belvopoc.model.Institution;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InstitutionRepository extends JpaRepository<Institution, Long> {

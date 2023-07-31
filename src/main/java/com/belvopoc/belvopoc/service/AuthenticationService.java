@@ -1,11 +1,10 @@
-package com.belvopoc.belvopoc.service.auth;
+package com.belvopoc.belvopoc.service;
 
-import com.belvopoc.belvopoc.api.auth.dto.AuthenticationRequest;
-import com.belvopoc.belvopoc.api.auth.dto.AuthenticationResponse;
-import com.belvopoc.belvopoc.api.auth.dto.RegisterRequest;
-import com.belvopoc.belvopoc.domain.Role;
-import com.belvopoc.belvopoc.domain.User;
-import com.belvopoc.belvopoc.service.UserService;
+import com.belvopoc.belvopoc.model.dto.AuthenticationRequest;
+import com.belvopoc.belvopoc.model.dto.AuthenticationResponse;
+import com.belvopoc.belvopoc.model.dto.RegisterRequest;
+import com.belvopoc.belvopoc.model.Role;
+import com.belvopoc.belvopoc.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

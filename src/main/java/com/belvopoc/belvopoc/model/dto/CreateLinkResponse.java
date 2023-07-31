@@ -1,13 +1,16 @@
-package com.belvopoc.belvopoc.api.belvo.dto;
+package com.belvopoc.belvopoc.model.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class BalanceResponse {
-    private Long current;
-    private Long available;
+public class CreateLinkResponse {
+
+    private boolean status;
+
 }
